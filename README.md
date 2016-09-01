@@ -1,5 +1,8 @@
 # event-driven-code-with-nodejs-aws-lambda-workshop
 
+## slides
+https://slides.com/jpizarrom/event-driven-code-with-nodejs-aws-lambda-workshop
+
 # Lab 0: Deps
     nvm
         https://github.com/creationix/nvm#install-script
