@@ -29,6 +29,10 @@
     http://api.mercadopublico.cl/modules/ejemplo_08.aspx
 
     add var mercadopublicoTicket in _meta/variables/s-variables-common.json
+    {
+        "project": "customname",
+        "mercadopublicoTicket": "xxxxxxx"
+    }
 
 # Lab 1: collector-download_detail, functions and deps
     cd collector/download_detail && npm install && cd ../..
