@@ -1,0 +1,23 @@
+{
+    "Records": [
+        {
+            "eventID": "7912ac9f40ba970ddccd5ca395e3c731",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1471912860,
+                "Keys": {
+                    "id": {
+                        "S": "2788-288-L116"
+                    }
+                },
+                "SequenceNumber": "1233475600000000011025614315",
+                "SizeBytes": 15,
+                "StreamViewType": "KEYS_ONLY"
+            },
+            "eventSourceARN": ""
+        }
+    ]
+}

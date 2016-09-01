@@ -1,0 +1,14 @@
+{
+  "detailsTable": "${project}-${stage}-detail",
+  "detailsUniqueTable": "${project}-${stage}-detail-unique",
+  "listTable": "${project}-${stage}-list",
+  "topicsTable": "${project}-${stage}-topic",
+  "elasticsearchEndpoint": "TODO",
+  "elasticsearchIndex": "myindex",
+  "elasticsearchDoctype": "mytype",
+  "detailStream": "${project}-${stage}-detail",
+  "detailUniqueStream": "${project}-${stage}-detail-unique",
+  "dummyTopic": "${project}-${stage}-dummy",
+  "messageTopic": "${project}-${stage}-message",
+  "messageDefaultTopic": "${project}-${stage}-message-default"
+}

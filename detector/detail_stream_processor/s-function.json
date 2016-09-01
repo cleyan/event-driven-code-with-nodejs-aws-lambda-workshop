@@ -1,0 +1,37 @@
+{
+  "name": "detector-detail_stream_processor",
+  "runtime": "nodejs",
+  "description": "Serverless Lambda function for project: serverless-mp",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 120,
+  "memorySize": 128,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "detailsTable",
+      "type": "dynamodbstream",
+      "config": {
+        "streamArn": "${detailsTableStreamARN}",
+        "startingPosition": "LATEST",
+        "batchSize": 1,
+        "enabled": true
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "DETAILS_UNIQUE_TABLE": "$${detailsUniqueTable}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "detector-detector",
+  "runtime": "nodejs",
+  "description": "Serverless Lambda function for project: serverless-mp",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 120,
+  "memorySize": 128,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "DETECTOR_TOPIC_ARN": "${dummyTopicARN}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}

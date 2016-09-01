@@ -1,0 +1,36 @@
+{
+  "name": "collector-download_list",
+  "runtime": "nodejs",
+  "description": "Serverless Lambda function for project: serverless-mp",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 120,
+  "memorySize": 128,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "mySchedule",
+      "type": "schedule",
+      "config": {
+        "schedule": "cron(0 11,23 ? * MON-SUN *)",
+        "enabled": false
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "LIST_TABLE": "$${listTable}",
+    "MERCADOPUBLICO_TICKET": "${mercadopublicoTicket}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}

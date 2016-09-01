@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "kinesis": {
+                "kinesisSchemaVersion": "1.0",
+                "partitionKey": "key_",
+                "sequenceNumber": "",
+                "data": "eyJpZCI6IjIwMTYwODIyIiwiaW5mbyI6eyJDb2RpZ29FeHRlcm5vIjoiMjc4OC0yODgtTDExNiIsIk5vbWJyZSI6Ik1BVEVSSUFMRVMgREUgRkVSUkVURVJJQSAiLCJDb2RpZ29Fc3RhZG8iOjUsIkZlY2hhQ2llcnJlIjoiMjAxNi0wOC0yOVQxNTozMDowMCJ9fQ==",
+                "approximateArrivalTimestamp": 1471906817.077
+            },
+            "eventSource": "aws:kinesis",
+            "eventVersion": "1.0",
+            "eventID": "",
+            "eventName": "aws:kinesis:record",
+            "invokeIdentityArn": "",
+            "awsRegion": "us-east-1",
+            "eventSourceARN": ""
+        }
+    ]
+}

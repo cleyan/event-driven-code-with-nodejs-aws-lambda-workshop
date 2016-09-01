@@ -1,0 +1,416 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application's resources outside of Lambdas and Api Gateway",
+  "Resources": {
+    "IamRoleLambda": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
+      }
+    },
+    "IamPolicyLambda": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "${stage}-${project}-lambda",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": "arn:aws:logs:${region}:*:*"
+            },
+            {
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${listTable}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${listTable}",
+                      "/stream/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${detailsTable}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:kinesis:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":stream/",
+                      "$${detailStream}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${detailsTable}",
+                      "/stream/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${detailsUniqueTable}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${detailsUniqueTable}",
+                      "/stream/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:kinesis:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":stream/",
+                      "$${detailUniqueStream}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:sns:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      "$${dummyTopic}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      "$${topicsTable}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:sns:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      "$${messageTopic}"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:sns:${region}:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      "$${messageDefaultTopic}"
+                    ]
+                  ]
+                }
+              ],
+              "Action": [
+                "*"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Resource": [
+                "*"
+              ],
+              "Action": [
+                "lambda:InvokeFunction"
+              ],
+              "Effect": "Allow"
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "IamRoleLambda"
+          }
+        ]
+      }
+    },
+    "DetailsTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "created",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "created",
+            "KeyType": "RANGE"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": "1",
+          "WriteCapacityUnits": "1"
+        },
+        "StreamSpecification": {
+          "StreamViewType": "NEW_AND_OLD_IMAGES"
+        },
+        "TableName": "$${detailsTable}"
+      }
+    },
+    "DetailsUniqueTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": "1",
+          "WriteCapacityUnits": "1"
+        },
+        "StreamSpecification": {
+          "StreamViewType": "KEYS_ONLY"
+        },
+        "TableName": "$${detailsUniqueTable}"
+      }
+    },
+    "ListTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "created",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "created",
+            "KeyType": "RANGE"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": "1",
+          "WriteCapacityUnits": "1"
+        },
+        "StreamSpecification": {
+          "StreamViewType": "NEW_IMAGE"
+        },
+        "TableName": "$${listTable}"
+      }
+    },
+    "TopicsTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": "1",
+          "WriteCapacityUnits": "1"
+        },
+        "StreamSpecification": {
+          "StreamViewType": "NEW_AND_OLD_IMAGES"
+        },
+        "TableName": "$${topicsTable}"
+      }
+    },
+    "DetailStream": {
+      "Type": "AWS::Kinesis::Stream",
+      "Properties": {
+        "Name" : "$${detailStream}",
+        "ShardCount": 1
+      }
+    },
+    "DummyTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": "$${dummyTopic}"
+      }
+    },
+    "MessageTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": "$${messageTopic}"
+      }
+    },
+    "MessageDefaultTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": "$${messageDefaultTopic}"
+      }
+    }
+  },
+  "Outputs": {
+    "IamRoleArnLambda": {
+      "Description": "ARN of the lambda IAM role",
+      "Value": {
+        "Fn::GetAtt": [
+          "IamRoleLambda",
+          "Arn"
+        ]
+      }
+    },
+    "DetailsTableStreamARN": {
+      "Value": {
+        "Fn::GetAtt": [
+          "DetailsTable",
+          "StreamArn"
+        ]
+      }
+    },
+    "DetailStreamARN": {
+      "Value": {
+        "Fn::GetAtt": [
+          "DetailStream",
+          "Arn"
+        ]
+      }
+    },
+    "DummyTopicARN": {
+      "Value": {
+        "Ref": "DummyTopic"
+      }
+    },
+    "MessageTopicARN": {
+      "Value": {
+        "Ref": "MessageTopic"
+      }
+    },
+    "MessageDefaultTopicARN": {
+      "Value": {
+        "Ref": "MessageDefaultTopic"
+      }
+    }
+  }
+}

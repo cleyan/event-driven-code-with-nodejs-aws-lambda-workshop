@@ -1,0 +1,40 @@
+{
+    "Records": [
+        {
+            "eventID": "bb2556d1671cc49760781c8cdf566c74",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1471912320,
+                "Keys": {
+                    "created": {
+                        "S": "1471912336"
+                    },
+                    "id": {
+                        "S": "2788-288-L116"
+                    }
+                },
+                "NewImage": {
+                    "created": {
+                        "S": "1471912336"
+                    },
+                    "id": {
+                        "S": "2788-288-L116"
+                    },
+                    "updated": {
+                        "S": "1471912336"
+                    },
+                    "info": {
+                        "S": "{\"Cantidad\":1,\"FechaCreacion\":\"2016-08-22T21:32:15.477\",\"Version\":\"v1\",\"Listado\":[{\"CodigoExterno\":\"2788-288-L116\",\"Nombre\":\"MATERIALES DE FERRETERIA \",\"CodigoEstado\":5,\"Descripcion\":\"SE REQUIERE LA COMPRA DE MATERIALES DE FERRETERIA PARA MANTENCION DE PLAZAS (SOL. DE COMPRA N° 57280 DEL 10.08.2016 - ASEO Y ORNATO)\",\"FechaCierre\":null,\"Estado\":\"Publicada\",\"Comprador\":{\"CodigoOrganismo\":\"100728\",\"NombreOrganismo\":\"ILUSTRE MUNICIPALIDAD DE PAINE\",\"RutUnidad\":\"69.072.600-9\",\"CodigoUnidad\":\"3777\",\"NombreUnidad\":\"DEPARTAMENTO DE ADQUISICIONES\",\"DireccionUnidad\":\"AV. 18 DE SEPTIEMBRE # 35\",\"ComunaUnidad\":\"Paine\",\"RegionUnidad\":\"Región Metropolitana de Santiago\",\"RutUsuario\":\"12.992.048-3\",\"CodigoUsuario\":\"1034997\",\"NombreUsuario\":\"MARIA EUGENIA SEPULVEDA JARA\",\"CargoUsuario\":\"ADQUISICIONES MUNICIPALES\"},\"DiasCierreLicitacion\":\"7\",\"Informada\":0,\"CodigoTipo\":1,\"Tipo\":\"L1\",\"TipoConvocatoria\":\"1\",\"Moneda\":\"CLP\",\"Etapas\":1,\"EstadoEtapas\":\"0\",\"TomaRazon\":\"0\",\"EstadoPublicidadOfertas\":1,\"JustificacionPublicidad\":\"\",\"Contrato\":\"0\",\"Obras\":\"0\",\"CantidadReclamos\":83,\"Fechas\":{\"FechaCreacion\":\"2016-08-22T00:00:00\",\"FechaCierre\":\"2016-08-29T15:30:00\",\"FechaInicio\":\"2016-08-22T15:57:00\",\"FechaFinal\":\"2016-08-25T15:57:00\",\"FechaPubRespuestas\":\"2016-08-26T15:57:00\",\"FechaActoAperturaTecnica\":\"2016-08-29T15:31:00\",\"FechaActoAperturaEconomica\":\"2016-08-29T15:31:00\",\"FechaPublicacion\":\"2016-08-22T11:15:44.757\",\"FechaAdjudicacion\":\"2016-09-30T18:00:00\",\"FechaEstimadaAdjudicacion\":\"2016-09-30T18:00:00\",\"FechaSoporteFisico\":null,\"FechaTiempoEvaluacion\":null,\"FechaEstimadaFirma\":null,\"FechasUsuario\":null,\"FechaVisitaTerreno\":null,\"FechaEntregaAntecedentes\":null},\"UnidadTiempoEvaluacion\":1,\"DireccionVisita\":\"\",\"DireccionEntrega\":\"\",\"Estimacion\":2,\"FuenteFinanciamiento\":\"PRESUPUESTO MUNICIPAL\",\"VisibilidadMonto\":1,\"MontoEstimado\":1000000.0,\"Tiempo\":null,\"UnidadTiempo\":\"1\",\"Modalidad\":1,\"TipoPago\":\"2\",\"NombreResponsablePago\":\"CLAUDIA UBEDA\",\"EmailResponsablePago\":\"CUBEDA@PAINE.CL\",\"NombreResponsableContrato\":\"JOSE MANUEL URRUTIA\",\"EmailResponsableContrato\":\"ASEOYORNATO@PAINE.CL\",\"FonoResponsableContrato\":\"56-02-8218675-\",\"ProhibicionContratacion\":\"\",\"SubContratacion\":\"1\",\"UnidadTiempoDuracionContrato\":1,\"TiempoDuracionContrato\":\"0\",\"TipoDuracionContrato\":\" \",\"JustificacionMontoEstimado\":\"\",\"ObservacionContract\":null,\"ExtensionPlazo\":0,\"EsBaseTipo\":0,\"UnidadTiempoContratoLicitacion\":\"1\",\"ValorTiempoRenovacion\":\"0\",\"PeriodoTiempoRenovacion\":\" \",\"EsRenovable\":0,\"Adjudicacion\":null,\"Items\":{\"Cantidad\":1,\"Listado\":[{\"Correlativo\":1,\"CodigoProducto\":31211501,\"CodigoCategoria\":\"31211500\",\"Categoria\":\"Artículos de fabricación y producción / Pinturas, diluyentes y accesorios para pintado / Pinturas\",\"NombreProducto\":\"Pinturas al esmalte\",\"Descripcion\":\"MATERIALES DE FERRETERIA SEGUN DETALLE ADJUNTO.\",\"UnidadMedida\":\"Unidad\",\"Cantidad\":1.0,\"Adjudicacion\":null}]}}]}"
+                    }
+                },
+                "SequenceNumber": "",
+                "SizeBytes": 2966,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": ""
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "elastic-elastic",
+  "runtime": "nodejs",
+  "description": "Serverless Lambda function for project: serverless-mp",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 120,
+  "memorySize": 128,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "ELASTICSEARCH_ENDPOINT": "$${elasticsearchEndpoint}",
+    "ELASTICSEARCH_INDEX": "$${elasticsearchIndex}",
+    "ELASTICSEARCH_DOCTYPE": "$${elasticsearchDoctype}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
