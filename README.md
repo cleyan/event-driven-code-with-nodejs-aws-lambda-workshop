@@ -22,6 +22,7 @@ https://slides.com/jpizarrom/event-driven-code-with-nodejs-aws-lambda-workshop
 
 ### project init
     change s-project.json name to customname
+        sed -i .bak 's/serverless-mp/customname/' s-project.json
     ./node_modules/.bin/serverless project init -c -n customname
     ./node_modules/.bin/serverless resources deploy
     ./node_modules/.bin/serverless function deploy
